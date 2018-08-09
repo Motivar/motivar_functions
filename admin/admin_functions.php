@@ -61,7 +61,7 @@ global $wp_version;return(object) array('last_checked'=> time(),'version_checked
 function motivar_functions_admin_site_enqueue_styles()
 {
 	$level = array();
-	if (is_super_admin()){
+	if (current_user_can("administrator")){
 		$level['user'] = 'admin';
 	}
 	else {
@@ -72,7 +72,7 @@ function motivar_functions_admin_site_enqueue_styles()
     wp_localize_script( 'motivar-admin-myscript', 'sbp_user_level', $level );
 
     wp_enqueue_style( 'motivar-admin-css', plugin_dir_url( __FILE__ )  .'../../motivar_functions_child/admin/admin-style.css', true, '1.0.0' );
-    if (!is_super_admin())
+    if (!current_user_can("administrator"))
 		{
 		wp_enqueue_style( 'motivar-editor-css', plugin_dir_url( __FILE__ )  . '../../motivar_functions_child/admin/editor.css', true, '1.0.0' );
 		}
