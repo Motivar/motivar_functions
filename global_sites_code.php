@@ -335,3 +335,45 @@ function motivar_acf_json_load_point( $paths ) {
 }
 
 }
+
+if (!function_exists('motivar_footer_function'))
+{
+
+
+function motivar_footer_function($atts)
+{
+
+  extract(shortcode_atts(array(
+    'company' => '',
+    'year' => '',
+    'pre_html' => '',
+    'after_html' => '',
+), $atts));
+
+    $msg='<div id="motivar-footer-shortcode">';
+    if (!empty($pre_html))
+    {
+      $msg.='<div class="motivar-footer-pre">'.$pre_html.'</div>';
+    }
+    if (!empty($company)) {
+      if (empty($year))
+      {
+        $year=date('Y',strtotime('now'));
+      }
+    $msg .= '<div class="motivar-footer-company">' . __('All rights reserved','motivar') . ' '.__($company,'motivar').' <span class="year">'.$year.'</span></div>';
+    }
+    $msg .= '<div class="motivar-footer-motivar"><a href="https://motivar.io" target="_blank" title="'.__('Web design and development Corfu', 'motivar').'">' . __('Web design and development', 'motivar') . ' by <a href="https://motivar.io" target="_blank" title="'.__('Web design and development Corfu', 'motivar').'">Motivar.io</a></div>';
+    if (!empty($after_html))
+    {
+      $msg.='<div class="motivar-footer-after">'.$after_html.'</div>';
+    }      
+    
+    $msg.='</div>';
+
+    return $msg;
+}
+}
+add_shortcode('motivar_footer', 'motivar_footer_function');
+
+
+
