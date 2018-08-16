@@ -362,7 +362,7 @@ function motivar_footer_function($atts)
       }
     $msg .= '<div class="motivar-footer-company">' . __('All rights reserved','motivar') . ' '.__($company,'motivar').' <span class="year">'.$year.'</span></div>';
     }
-    $msg .= '<div class="motivar-footer-motivar"><a href="https://motivar.io" target="_blank" title="'.__('Web design and development Corfu', 'motivar').'">' . __('Web design and development', 'motivar') . ' by <a href="https://motivar.io" target="_blank" title="'.__('Web design and development Corfu', 'motivar').'">Motivar.io</a></div>';
+    $msg .= '<div class="motivar-footer-motivar"><a href="https://motivar.io" target="_blank" title="'.__('Web design and development Corfu', 'motivar').'">' . __('Web design and development', 'motivar') . '</a> by <a href="https://motivar.io" target="_blank" title="'.__('Web design and development Corfu', 'motivar').'">Motivar.io</a></div>';
     if (!empty($after_html))
     {
       $msg.='<div class="motivar-footer-after">'.$after_html.'</div>';
