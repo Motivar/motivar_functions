@@ -5,6 +5,7 @@ function motivar_admin_functions_options() {
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
+	
 global $current_user;
 $msg=$cls='';
 $vars=array(array('debug',0,'Enable Debug Mode'),array('admin_only',0,'Users only Can See the page'),array('admin_only_frontend',0,'Super User only Frontend'),array('map_key',2,'Google Maps Key'),array('google',1,'Google Analytics'),array('hotjar',1,'Hotjar Analytics'),array('mcp_key',2,'Mailchimp Api Key'),array('mcp_list_id',2,'Mailchimp List Id'), array('mcp_related_post',2,'Post Type Related to Mailchimp'), array('post_slugify',2,'Post Types to Slugify (separate with comma)'), array('tax_slugify',2,'taxonomies to Slugify (separate with comma)'),array('motivar_login_bcg',2,'Url of Image for Login Page'),array('motivar_login_color_url',2,'Font Color for urls'),array('motivar_login_color',2,'Background Color of Login Page'),array('motivar_login_url',2,'Url For Login Image'),array('motivar_login_alt',2,'Alt For Login Image'));
