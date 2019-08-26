@@ -1,4 +1,3 @@
-
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 add_menu_page( 'Admin Tools', 'Admin Tools', 'manage_options', 'wp_admin_tools', 'motivar_admin_functions_options');
