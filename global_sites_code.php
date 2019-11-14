@@ -376,4 +376,42 @@ function motivar_footer_function($atts)
 add_shortcode('motivar_footer', 'motivar_footer_function');
 
 
+if (!function_exists('filox_footer_function'))
+{
+function filox_footer_function($atts)
+{
+  extract(shortcode_atts(array(
+    'company' => '',
+    'year' => '',
+    'pre_html' => '',
+    'after_html' => '',
+    'filox_icon' => '1313'
+), $atts));
+    $msg='<div id="filox-footer-shortcode">';
+    if (!empty($pre_html))
+    {
+      $msg.='<div class="filox-footer-pre">'.$pre_html.'</div>';
+    }
+    $img = '';
+    if (!empty($filox_icon)) {
+            $img_url = wp_get_attachment_url($filox_icon);
+            $img = '<span class="filox_icon"><img alt="online-booking-engine-filox-websites" src="'.$img_url.'"/></span>';
+    } 
+    if (!empty($company)) {
+      if (empty($year))
+      {
+        $year=date('Y',strtotime('now'));
+      }
+    $msg .= '<div class="filox-footer-company">' . __('All rights reserved','filox') . ' '.__($company,'filox').' <span class="year">'.$year.'</span> / <a href="https://filox.gr" target="_blank" title="'.__('Web design and development', 'filox').'">' . __('Web design and development', 'filox') . '</a> by <a href="https://filox.gr" target="_blank" title="'.__('Web design and development', 'filox').'">'.$img.'Filox.gr</a></div>';
+    }
 
+    if (!empty($after_html))
+    {
+      $msg.='<div class="filox-footer-after">'.$after_html.'</div>';
+    }      
+    
+    $msg.='</div>';
+    return $msg;
+}
+}
+add_shortcode('filox_footer', 'filox_footer_function');
