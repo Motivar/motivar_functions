@@ -228,3 +228,43 @@ function url(){
     $_SERVER['REQUEST_URI']
   );
 }
+
+add_action('wp_print_scripts', function () {
+
+    //Add pages you want to allow to array
+    global $post;
+
+    $contact_pages = get_option('motivar_functions__recaptcha')?: '';
+    if (!empty($contact_pages)){
+        $contact_pages = explode(',', $contact_pages);
+    }
+
+    if (!in_array($post->ID, $contact_pages)) {
+        wp_dequeue_script('google-recaptcha');
+    }
+
+});
+
+
+function filox_recaptcha_css() {
+
+    $a=get_option('motivar_functions_recaptcha_position')?: '';
+    $b=get_option('motivar_functions_recaptcha_distance_from_bottom')?: '';
+
+    if ($a=='bottom_left') {
+        $style='<style type="text/css"> 
+            .grecaptcha-badge {
+                left: 0px !important;
+                bottom: '.$b.'!important;
+            }</style>';
+    }
+    if ($a=='bottom_right') {
+        $style='<style type="text/css"> 
+            .grecaptcha-badge {
+                right: 0px !important;
+                bottom: '.$b.'!important;
+            }</style>';
+    }
+    echo $style;
+}
+add_action('wp_head', 'filox_recaptcha_css');
