@@ -402,7 +402,7 @@ function filox_footer_function($atts)
       {
         $year=date('Y',strtotime('now'));
       }
-    $msg .= '<div class="filox-footer-company">' . __('All rights reserved','filox') . ' '.__($company,'filox').' <span class="year">'.$year.'</span> / <a href="https://filox.gr" target="_blank" title="'.__('Web design and development', 'filox').'">' . __('Web design and development', 'filox') . '</a> by <a href="https://filox.gr" target="_blank" title="'.__('Web design and development', 'filox').'">'.$img.'Filox.gr</a></div>';
+    $msg .= '<div class="filox-footer-company">' . __('All rights reserved','filox') . ' '.__($company,'filox').' <span class="year">'.$year.'</span> / <a href="https://filox.gr" target="_blank" title="'.__('Web design and development', 'filox').'">' . __('Web design and development', 'filox') . '</a> by <a href="https://filox.gr" target="_blank" title="'.__('Web design and development', 'filox').'">'.$img.'</a></div>';
     }
 
     if (!empty($after_html))
