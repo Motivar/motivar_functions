@@ -3,7 +3,7 @@
 Plugin Name: Wordpress Admin tools
 Plugin URI: https://www.motivar.io
 Description: Hide unwanted texts for clients and run custom php codes and shortcodes (for developers mostly)
-Version: 1.6
+Version: 1.7
 Author: Giannopoulos Nikolaos, Anastasiou Kwnstantinos
 Author URI: https://www.motivar.io
 Text Domain:       github-updater
@@ -231,9 +231,10 @@ function url(){
 
 add_action('wp_print_scripts', function () {
 
-    //Add pages you want to allow to array
+    if (!is_admin())
+    {    //Add pages you want to allow to array
     global $post;
-
+    
     $contact_pages = get_option('motivar_functions__recaptcha')?: '';
     if (!empty($contact_pages)){
         $contact_pages = explode(',', $contact_pages);
@@ -241,6 +242,7 @@ add_action('wp_print_scripts', function () {
 
     if (!in_array($post->ID, $contact_pages)) {
         wp_dequeue_script('google-recaptcha');
+    }
     }
 
 });
