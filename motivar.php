@@ -235,7 +235,7 @@ add_action('wp_print_scripts', function () {
     {    //Add pages you want to allow to array
     global $post;
     
-    $contact_pages = get_option('motivar_functions__recaptcha')?: '';
+    $contact_pages = get_option('motivar_functions__recaptcha')?: array();
     if (!empty($contact_pages)){
         $contact_pages = explode(',', $contact_pages);
     }
