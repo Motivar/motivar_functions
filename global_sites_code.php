@@ -349,7 +349,6 @@ function motivar_footer_function($atts)
     'motivar_icon' => '1313'
 ), $atts));
 
-echo $motivar_icon.'gfgfg';
     $msg='<div id="motivar-footer-shortcode">';
     if (!empty($pre_html))
     {
