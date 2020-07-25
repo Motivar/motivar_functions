@@ -240,8 +240,9 @@ add_action('wp_print_scripts', function () {
         $contact_pages = explode(',', $contact_pages);
     }
 
-    if (!in_array($post->ID, $contact_pages)) {
+     if (!in_array($post->ID, $contact_pages)) {
         wp_dequeue_script('google-recaptcha');
+         wp_dequeue_script('wpcf7-recaptcha');
     }
     }
 
