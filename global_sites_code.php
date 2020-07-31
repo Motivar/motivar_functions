@@ -418,3 +418,50 @@ function filox_footer_function($atts)
 }
 }
 add_shortcode('filox_footer', 'filox_footer_function');
+
+
+
+if (!function_exists('motivar_filox_footer_function'))
+{
+function motivar_filox_footer_function($atts)
+{
+  extract(shortcode_atts(array(
+    'company' => '',
+    'year' => '',
+    'pre_html' => '',
+    'after_html' => '',
+    'filox_icon' => '1313',
+    'motivar_icon' => '',
+), $atts));
+    $msg='<div id="motivar-filox-footer-shortcode">';
+    if (!empty($pre_html))
+    {
+      $msg.='<div class="motivar-footer-pre">'.$pre_html.'</div>';
+    }
+    $img = '';
+    if (!empty($filox_icon)) {
+            $img_url = wp_get_attachment_url($filox_icon);
+            $img = '<span class="filox_icon"><img alt="online-booking-engine-filox-websites" src="'.$img_url.'"/></span>';
+    } 
+    if (!empty($motivar_icon)) {
+            $img_url = wp_get_attachment_url($motivar_icon);
+            $motivar_img = '<span class="motivar_icon"><img alt="creative-web-agency-corfu" src="'.$img_url.'"/></span>';
+    } 
+    if (!empty($company)) {
+      if (empty($year))
+      {
+        $year=date('Y',strtotime('now'));
+      }
+    $msg .= '<div class="filox-footer-company">' . __('All rights reserved','filox') . ' '.__($company,'filox').' <span class="year">'.$year.'</span> / <a href="https://motivar.io" target="_blank" title="'.__('Web design and development', 'filox').'">' . __('Web design and development', 'filox') . '</a> by <a href="https://motivar.io" target="_blank" title="'.__('Web design and development', 'filox').'">'.$motivar_img.'</a>. <span class="filox_booking_engine"><a href="https://filox.gr" target="_blank" title="'.__('Booking engine powered by', 'filox').'">'.__('Booking engine powered by').'</a></span><span class="filox_img"><a href="https://filox.gr" target="_blank" title="'.__('Booking engine powered by', 'filox').'">'.$img.'</a></span> </div>';
+    }
+
+    if (!empty($after_html))
+    {
+      $msg.='<div class="filox-footer-after">'.$after_html.'</div>';
+    }      
+    
+    $msg.='</div>';
+    return $msg;
+}
+}
+add_shortcode('motivar_filox_footer', 'motivar_filox_footer_function');
