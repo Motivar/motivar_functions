@@ -346,7 +346,9 @@ function motivar_footer_function($atts)
     'year' => '',
     'pre_html' => '',
     'after_html' => '',
-    'motivar_icon' => '1313'
+    'motivar_icon' => '1313',
+    'company_logo' =>  'image', /** or text */
+    'company_name' => 'Motivar'
 ), $atts));
 
     $msg='<div id="motivar-footer-shortcode">';
@@ -354,17 +356,29 @@ function motivar_footer_function($atts)
     {
       $msg.='<div class="motivar-footer-pre">'.$pre_html.'</div>';
     }
-    $img = '';
-    if (!empty($motivar_icon)) {
-            $img_url = wp_get_attachment_url($motivar_icon);
-            $img = '<span class="motivar_icon"><img alt="motivar-corfu-web-agency" src="'.$img_url.'"/></span>';
-    } 
+
+
+    switch ($company_logo) {
+      case 'image':
+        $logo = '';
+        if (!empty($motivar_icon)) {
+                $img_url = wp_get_attachment_url($motivar_icon);
+                $logo = '<span class="motivar_icon"><img alt="motivar-corfu-web-agency" src="'.$img_url.'"/></span>';
+        } 
+        break;
+      case 'text':
+       $logo = '<span class="motivar_icon"><strong>'.$company_name.'</strong></span>';
+        break;
+    }
+
+
+
     if (!empty($company)) {
       if (empty($year))
       {
         $year=date('Y',strtotime('now'));
       }
-    $msg .= '<div class="motivar-footer-company">' . __('All rights reserved','motivar') . ' '.__($company,'motivar').' <span class="year">'.$year.'</span> / <a href="https://motivar.io" target="_blank" title="'.__('Web design and development', 'motivar').'">' . __('Web design and development', 'motivar') . '</a> by <a href="https://motivar.io" target="_blank" title="'.__('Web design and development', 'motivar').'">'.$img.'</a></div>';
+    $msg .= '<div class="motivar-footer-company">' . __('All rights reserved','motivar') . ' '.__($company,'motivar').' <span class="year">'.$year.'</span> / <a href="https://motivar.io" target="_blank" title="'.__('Web design and development', 'motivar').'">' . __('Web design and development', 'motivar') . '</a> by <a href="https://motivar.io" target="_blank" title="'.__('Web design and development', 'motivar').'">'.$logo.'</a></div>';
     }
 
     if (!empty($after_html))
