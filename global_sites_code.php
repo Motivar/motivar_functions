@@ -378,7 +378,17 @@ function motivar_footer_function($atts)
       {
         $year=date('Y',strtotime('now'));
       }
-    $msg .= '<div class="motivar-footer-company">' . __('All rights reserved','motivar') . ' '.__($company,'motivar').' <span class="year">'.$year.'</span> / <a href="https://motivar.io" target="_blank" title="'.__('Web design and development', 'motivar').'">' . __('Web design and development', 'motivar') . '</a> by <a href="https://motivar.io" target="_blank" title="'.__('Web design and development', 'motivar').'">'.$logo.'</a></div>';
+    $msg .= '
+    <div class="motivar-footer-company">
+      <span class="all_rights_reserved">' . __('All rights reserved','motivar') .'</span>
+      <span class="company_name">'.__($company,'motivar').'</span>
+      <span class="year">'.$year.'</span> 
+      <span class="slash"> / </span> 
+      <a class="web_design" href="https://motivar.io" target="_blank" title="'.__('Web design and development', 'motivar').'">' . __('Web design and development', 'motivar') . '</a>
+      <span class="by">'.__('by', 'motivar').'</span>  
+      <a href="https://motivar.io" target="_blank" title="'.__('Web design and development', 'motivar').'" class="motivar_brand">'.$logo.'
+      </a>
+    </div>';
     }
 
     if (!empty($after_html))
