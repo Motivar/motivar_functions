@@ -110,8 +110,8 @@ function motivar_functions_redirect()
     }
 
     //function to disable access to frontend for user
-    if (!is_super_admin())
-    {
+    if (!current_user_can('administrator') && get_option('motivar_functions_admin_only_frontend')) {
+    
     if (get_option('motivar_functions_debug'))
        {
         $url=url();
