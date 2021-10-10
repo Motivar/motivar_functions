@@ -250,7 +250,7 @@ add_action('wp_print_scripts', function () {
 
 
 function filox_recaptcha_css() {
-
+    $style='';
     $a=get_option('motivar_functions_recaptcha_position')?: '';
     $b=get_option('motivar_functions_recaptcha_distance_from_bottom')?: '';
 
