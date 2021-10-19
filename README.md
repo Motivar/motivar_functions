@@ -13,6 +13,10 @@ Plugin is updated frequently.
 
 
 
+#How to work it on a project:
+- New project. Install the plugin and a new subfolder will be created with the name motivar_functions_child
+
+
 #1.3.7
 Adjustments for css and dynamic php files
 
